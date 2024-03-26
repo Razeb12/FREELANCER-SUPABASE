@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "freelancer-supabase",
-    "slug": "freelancer-supabase",
+    "name": "Freelancer",
+    "slug": "freelancer-v1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -15,16 +15,33 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.expectoo.freelancer"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.expectoo.freelancer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "owner": "expectoo",
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "82f68bb9-81b7-4557-93c3-3f8f54d54e7d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/82f68bb9-81b7-4557-93c3-3f8f54d54e7d"
     }
   }
 }
