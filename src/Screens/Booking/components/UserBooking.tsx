@@ -40,7 +40,7 @@ const UserBooking = ({ item, navigation, setData }) => {
       state.freelancers?.find((f) => f.uid === item.bookingId)
   );
 
-  console.log(item.id);
+
   const submitRating = (id: string) => async () => {
     setLoading(true);
     const { error } = await supabase

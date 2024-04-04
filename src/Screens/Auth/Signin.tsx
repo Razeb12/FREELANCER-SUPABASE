@@ -51,6 +51,7 @@ export default function Signin(props: {
         useUserStore.getState().setFreelancers(profiles);
         useUserStore.getState().setUser(data?.user.user_metadata);
         useUserStore.getState().setProfile(profile);
+        useUserStore.getState().setFavorites(profile[0].Favorites);
         useUserStore.getState().setImage(profile[0].profilePhoto);
        
         props.closeBottomModal();

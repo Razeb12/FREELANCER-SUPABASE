@@ -1,5 +1,11 @@
 import React, { Dispatch, ReactNode, SetStateAction } from "react";
-import { Modal, ModalProps, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Modal,
+  ModalProps,
+  Platform,
+  View,
+} from "react-native";
 
 interface ConfirmModalProps {
   visible: boolean;
@@ -18,17 +24,22 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
 }) => {
   return (
     <View>
-      <Modal
-        animationType={animation}
-        transparent={true}
-        visible={visible}
-        onRequestClose={() => setVisible(false)}
-        statusBarTranslucent={translucent}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
       >
-        <View style={{ flex: 1, backgroundColor: "#0000006B" }}>
-          {children}
-        </View>
-      </Modal>
+        <Modal
+          animationType={animation}
+          transparent={true}
+          visible={visible}
+          onRequestClose={() => setVisible(false)}
+          statusBarTranslucent={translucent}
+        >
+          <View style={{ flex: 1, backgroundColor: "#0000006B" }}>
+            {children}
+          </View>
+        </Modal>
+      </KeyboardAvoidingView>
     </View>
   );
 };

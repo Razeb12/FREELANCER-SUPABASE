@@ -16,6 +16,7 @@ import { getDistance } from "geolib";
 import { useUserStore } from "../../../../Store/UserStore";
 import { DEFAULT_GALLERY_IMAGE } from "../../../../config";
 import { supabase } from "../../../../lib/supabase";
+import { useServiceStore } from "../../../../Store/ServiceStore";
 
 const FreelancerCard = ({
   item,
@@ -29,7 +30,7 @@ const FreelancerCard = ({
   const user = useUserStore((state) => state.user);
   const [refresh, setRefresh] = React.useState(false);
   const favs = useUserStore((state) => state.favorites);
-
+  const serviceStore = useServiceStore();
   const saveFreelancer = async (id: string) => {
     setLoading(true);
 
@@ -66,8 +67,9 @@ const FreelancerCard = ({
     }
 
     setLoading(false);
-    setRefresh(!refresh);
   };
+
+  console.log("am here");
 
   return (
     <TouchableOpacity
@@ -165,20 +167,43 @@ const FreelancerCard = ({
               </>
             )}
           </View>
-          {item.skills?.length > 0 && (
-            <Text
+          {item.Skills?.length > 0 && (
+            <View
               style={{
-                fontFamily: "Rubik-Regular",
-                fontSize: 14,
-                marginVertical: 5,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
-              ellipsizeMode="tail"
-              numberOfLines={4}
             >
-              {item.skills
-                .map((item: { name: string }) => item.name)
-                .join(" • ")}
-            </Text>
+              <Text
+                style={{
+                  fontFamily: "Rubik-Regular",
+                  fontSize: 14,
+                  marginVertical: 5,
+                }}
+                ellipsizeMode="tail"
+                numberOfLines={4}
+              >
+                {item.Skills.map((item: { name: string }) => item.name).join(
+                  " • "
+                )}
+              </Text>
+              {serviceStore.selectedService && (
+                <Text
+                  style={{
+                    fontFamily: "Rubik-Regular",
+                    fontSize: 16,
+                    marginVertical: 5,
+                  }}
+                >
+                  {item.Skills.map((skill: { name: string; rate: number }) => {
+                    if (skill.name === serviceStore.selectedService) {
+                      return `$${skill.rate}`; // Add a $ before the value
+                    }
+                  })}
+                </Text>
+              )}
+            </View>
           )}
           <View
             style={{
@@ -206,10 +231,23 @@ const FreelancerCard = ({
                       longitude: parseFloat(profile[0]?.lng || "0"),
                     }
                   ) / 1000
-                )}
-                km away
+                ) > 0
+                  ? `${Math.round(
+                      getDistance(
+                        {
+                          latitude: item.lat || 0,
+                          longitude: item.lng || 0,
+                        },
+                        {
+                          latitude: parseFloat(profile[0]?.lat || "0"),
+                          longitude: parseFloat(profile[0]?.lng || "0"),
+                        }
+                      ) / 1000
+                    )} km away`
+                  : null}
               </Text>
             ) : null}
+
             <View
               style={{
                 flexDirection: "row",

@@ -51,7 +51,7 @@ export default function Signup(props: {
         },
       },
     });
-    console.log(data);
+
 
     if (error) {
       Toast.show({

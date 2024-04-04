@@ -3,15 +3,14 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import moment from "moment";
 import React, { useState } from "react";
-import
-  {
-    ActivityIndicator,
-    Image,
-    Pressable,
-    Text,
-    TouchableOpacity,
-    View,
-  } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useUserStore } from "../../../../Store/UserStore";
 import { supabase } from "../../../../lib/supabase";
 import { Button } from "../../../components/Button";
@@ -32,7 +31,7 @@ const FreelancerBooking = ({ item, navigation }) => {
   const [completeLoad, setCompleteLoad] = useState(false);
   const [declineLoad, setDeclineLoad] = useState(false);
   const user = useUserStore((state) => state.profile);
-
+  const loadNewData = useUserStore((state) => state.loading);
   const completeBooking = async () => {
     try {
       setVisible(false);
@@ -74,7 +73,7 @@ const FreelancerBooking = ({ item, navigation }) => {
         .eq("id", id)
         .select();
     }
-
+    useUserStore.getState().setLoading(!loadNewData);
     setLoading(false);
     setVisible(false);
   };
@@ -109,6 +108,7 @@ const FreelancerBooking = ({ item, navigation }) => {
         style={{
           width: "35%",
           height: "100%",
+          marginRight: 10,
         }}
       >
         <View>
@@ -192,16 +192,15 @@ const FreelancerBooking = ({ item, navigation }) => {
               {skill.name}
             </Text>
           ))}
-          {item.status !== "Completed" &&
-            item.status !== "Awaiting"  && (
-              <MaterialCommunityIcons
-                name="information-outline"
-                size={24}
-                color="#4E4E4E"
-                style={{ position: "absolute", right: 0, top: 0 }}
-                onPress={() => setVisibleModal(true)}
-              />
-            )}
+          {item.status !== "Completed" && item.status !== "Awaiting" && (
+            <MaterialCommunityIcons
+              name="information-outline"
+              size={24}
+              color="#4E4E4E"
+              style={{ position: "absolute", right: 0, top: 0 }}
+              onPress={() => setVisibleModal(true)}
+            />
+          )}
         </View>
         <View
           style={{

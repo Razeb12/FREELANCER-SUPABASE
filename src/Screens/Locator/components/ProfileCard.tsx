@@ -205,7 +205,7 @@ const ProfileCard = ({
               alignItems: "center",
             }}
           >
-            {freelancers?.reviews?.length > 0 ? (
+            {freelancer?.Reviews?.length > 0 ? (
               <AntDesign name="star" size={17} color="#009C52" />
             ) : (
               <AntDesign name="staro" size={17} color="#009C52" />
@@ -216,8 +216,8 @@ const ProfileCard = ({
                 fontFamily: "Rubik-Regular",
               }}
             >
-              {freelancers?.reviews?.length > 0
-                ? freelancers?.reviews?.length
+              {freelancer?.Reviews?.length > 0
+                ? freelancer?.Reviews?.length
                 : "no reviews yet"}
             </Text>
           </View>
