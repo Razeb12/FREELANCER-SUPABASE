@@ -21,9 +21,13 @@ import { useServiceStore } from "../../../../Store/ServiceStore";
 const FreelancerCard = ({
   item,
   navigation,
+  unLikeFreelancer,
+  unlike,
 }: {
   item: any;
   navigation: any;
+  optionalFunction?: any;
+  unlike?: Boolean
 }) => {
   const [loading, setLoading] = React.useState(false);
   const profile = useUserStore((state) => state.profile);
@@ -31,6 +35,7 @@ const FreelancerCard = ({
   const [refresh, setRefresh] = React.useState(false);
   const favs = useUserStore((state) => state.favorites);
   const serviceStore = useServiceStore();
+
   const saveFreelancer = async (id: string) => {
     setLoading(true);
 
@@ -51,6 +56,10 @@ const FreelancerCard = ({
       useUserStore
         .getState()
         .setFavorites(favs.filter((fav: any) => fav.freelancer_id !== id));
+
+        if(unlike){
+          unLikeFreelancer();
+        }
     } else {
       const { data, error } = await supabase
         .from("Favorites")
@@ -68,8 +77,6 @@ const FreelancerCard = ({
 
     setLoading(false);
   };
-
-  console.log("am here");
 
   return (
     <TouchableOpacity
@@ -116,7 +123,7 @@ const FreelancerCard = ({
           }}
           resizeMode="cover"
         />
-        <View style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
+        <View style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
           <View
             style={{
               flexDirection: "row",
@@ -184,9 +191,16 @@ const FreelancerCard = ({
                 ellipsizeMode="tail"
                 numberOfLines={4}
               >
-                {item.Skills.map((item: { name: string }) => item.name).join(
-                  " • "
-                )}
+                {serviceStore.selectedService
+                  ? item.Skills.filter(
+                      (skill: { name: string }) =>
+                        skill.name === serviceStore.selectedService
+                    )
+                      .map((skill) => skill.name)
+                      .join(" • ")
+                  : item.Skills.map((item: { name: string }) => item.name).join(
+                      " • "
+                    )}
               </Text>
               {serviceStore.selectedService && (
                 <Text

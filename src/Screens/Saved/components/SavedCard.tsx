@@ -15,6 +15,7 @@ const SavedCard = ({
   navigation: any;
   location: Location;
 }) => {
+
   const sortedData = location.users.filter((item, idx: number) => idx < 4);
   return (
     <TouchableOpacity

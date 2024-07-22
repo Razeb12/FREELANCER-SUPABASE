@@ -7,7 +7,7 @@ import FAQ from "../Screens/Help/FAQ";
 import Help from "../Screens/Help/Help";
 import Profile from "../Screens/Profile/Profile";
 import Statistics from "../Screens/Statistics/Statistics";
-
+import Calendar from "../Screens/Calendar";
 
 // import EditProfile from "../screens/EditProfile/EditProfile";
 
@@ -34,6 +34,11 @@ const ProfileStack = () => {
       <Stack.Screen
         name="AvailabilityList"
         component={Availiability}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Calendar"
+        component={Calendar}
         options={{ headerShown: false }}
       />
       <Stack.Screen

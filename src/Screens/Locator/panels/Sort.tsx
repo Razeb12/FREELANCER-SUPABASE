@@ -21,7 +21,7 @@ const Sort = ({ close, sortData }: { close: () => void; sortData: any }) => {
   const [sortList, setSortList] = useState(mainSortList);
   const [data] = useState(sortData);
 
-  // console.log(sortData[0].Skills);
+ console.log(sortData[1].Reviews);
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FBFBFB" }}>
@@ -89,41 +89,20 @@ const Sort = ({ close, sortData }: { close: () => void; sortData: any }) => {
                 });
               } else if (item.value === "Rating high to low") {
                 sortedFreelancers = [...sortData].sort((a, b) => {
-                  const ratingA =
-                    a.Reviews && a.Reviews.length > 0
-                      ? a.Reviews.reduce(
-                          (prev, curr) => prev + curr.rating,
-                          0
-                        ) / a.Reviews.length
-                      : 0;
-                  const ratingB =
-                    b.Reviews && b.Reviews.length > 0
-                      ? b.Reviews.reduce(
-                          (prev, curr) => prev + curr.rating,
-                          0
-                        ) / b.Reviews.length
-                      : 0;
-                  return ratingB - ratingA;
+                  const reviewsA = a.Reviews ? a.Reviews.length : 0;
+                  const reviewsB = b.Reviews ? b.Reviews.length : 0;
+                  return reviewsB - reviewsA; // Sort in descending order (high to low)
                 });
               } else if (item.value === "Rating low to high") {
                 sortedFreelancers = [...sortData].sort((a, b) => {
-                  const ratingA =
-                    a.Reviews && a.Reviews.length > 0
-                      ? a.Reviews.reduce(
-                          (prev, curr) => prev + curr.rating,
-                          0
-                        ) / a.Reviews.length
-                      : 0;
-                  const ratingB =
-                    b.Reviews && b.Reviews.length > 0
-                      ? b.Reviews.reduce(
-                          (prev, curr) => prev + curr.rating,
-                          0
-                        ) / b.Reviews.length
-                      : 0;
-                  return ratingA - ratingB;
+                  const reviewsA = a.Reviews ? a.Reviews.length : 0;
+                  const reviewsB = b.Reviews ? b.Reviews.length : 0;
+                  return reviewsA - reviewsB; // Sort in ascending order (low to high)
                 });
               }
+
+
+
 
               userStore.setFreelancers(sortedFreelancers as Profile[]);
               close();

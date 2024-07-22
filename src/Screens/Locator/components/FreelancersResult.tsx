@@ -147,7 +147,6 @@ const FreelancersResult = ({
             </View>
           </View>
         </GestureDetector>
-
         <FlatList
           data={freelancers.length > 0 ? freelancers : []}
           renderItem={({ item }) => (

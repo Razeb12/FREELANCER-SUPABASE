@@ -9,7 +9,7 @@ import Review from "../Screens/Review/Review";
 import PaymentMethod from "../Screens/ConfirmPay.js/paymentMethod";
 import Booking from "../Screens/Booking/Booking";
 import Chatting from "../Screens/Chatting/Chatting";
-
+import Calendar from "../Screens/Calendar";
 const Stack = createNativeStackNavigator();
 
 const HomeStack = () => {
@@ -53,6 +53,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="Booking"
         component={Booking}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Calendar"
+        component={Calendar}
         options={{ headerShown: false }}
       />
       <Stack.Screen

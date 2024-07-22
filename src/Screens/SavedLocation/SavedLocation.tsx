@@ -27,26 +27,17 @@ const SavedLocation = ({
   const [search, setSearch] = useState("");
   const [savedUsers, setSavedUsers] = useState<Profile[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const user = useUserStore((state) => state.profile);
-  const freelancers = useUserStore((state) => state.freelancers);
   const favData = useUserStore((state) => state.favorites);
+  const reloadFavs = useUserStore((state) => state.reloadFavs);
+ const setReloadFavs = useUserStore((state) => state.setReloadFavs);
+
+
   useEffect(() => {
     getSavedUsers();
-  }, [favData.length]);
+  }, [favData.length, favData]);
 
   const getSavedUsers = async () => {
-    const favorites = favData.map((fav) => fav.freelancer_id);
-    let savedFav;
-    if (route.params.city) {
-      savedFav = freelancers?.filter(
-        (freelancer) => freelancer?.location === route.params.city
-      );
-    } else {
-      savedFav = freelancers?.filter(
-        (freelancer) =>
-          !freelancer?.location && favorites?.includes(freelancer.id)
-      );
-    }
+    let savedFav = route.params.users;
     setSavedUsers(savedFav);
   };
 
@@ -136,7 +127,19 @@ const SavedLocation = ({
                 )
               )}
               renderItem={({ item }) => (
-                <FreelancerCard item={item} navigation={navigation} />
+                <FreelancerCard
+                  item={item}
+                  navigation={navigation}
+                  unlike={true}
+                  unLikeFreelancer={() => {
+                    // Remove the particular data from savedUsers when triggered
+                    const updatedSavedUsers = savedUsers.filter(
+                      (user) => user.id !== item.id
+                    );
+                    setSavedUsers(updatedSavedUsers);
+                    setReloadFavs(!reloadFavs);
+                  }}
+                />
               )}
               showsVerticalScrollIndicator={false}
               keyExtractor={(item) => item.id}

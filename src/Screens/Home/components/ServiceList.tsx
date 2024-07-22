@@ -18,10 +18,11 @@ const ServiceList = ({
     (state) => state.setSelectedService
   );
   const handleItemClick = () => {
-    const selectedValue = service === true ? item.name : item.equipment;
+    const selectedValue = service === true ? item.name : item.name;
     setSelectedService(selectedValue);
     close()
   };
+
   return (
     <TouchableOpacity
       style={{

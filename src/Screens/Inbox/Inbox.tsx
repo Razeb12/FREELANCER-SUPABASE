@@ -35,14 +35,15 @@ const Inbox = ({ navigation }: { navigation: string }) => {
     fetchBookingsForUser();
     fetchBookingsForFreelancer();
     setDataToFetch(content === "user" ? friends : freelancer);
-  }, [content]);
+  }, [content, navigation]);
 
   const fetchBookingsForUser = async () => {
     setLoading(true);
     const { data: freelance, error: err } = await supabase
       .from("Bookings")
       .select("*")
-      .eq("bookingId", profile[0].uid);
+      .eq("bookingId", profile[0].uid)
+      .order("id", { ascending: false });
     // .neq("uid", session?.user.user_metadata.sub);
     if (err) {
       console.log(err);
@@ -73,7 +74,8 @@ const Inbox = ({ navigation }: { navigation: string }) => {
     const { data: freelance, error: err } = await supabase
       .from("Bookings")
       .select("*")
-      .eq("freelancerId", profile[0].uid);
+      .eq("freelancerId", profile[0].uid)
+      .order("created_at", { ascending: false })
 
     // .neq("uid", session?.user.user_metadata.sub);
     if (err) {
@@ -107,10 +109,6 @@ const Inbox = ({ navigation }: { navigation: string }) => {
     fetchBookingsForFreelancer();
     setRefreshing(false);
   };
-
-  console.log(dataToFetch);
-
-  // Now, searchResults will contain the filtered data
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FBFBFB" }}>
@@ -235,7 +233,7 @@ const Inbox = ({ navigation }: { navigation: string }) => {
           </View>
         ) : (
           <>
-            {dataToFetch?.length === 0 ? (
+            {friends?.length === 0 || freelancer.length === 0? (
               <NotFound
                 onPress={
                   content === "user"
@@ -246,11 +244,19 @@ const Inbox = ({ navigation }: { navigation: string }) => {
             ) : (
               <>
                 <FlatList
-                  data={dataToFetch?.filter((item: { fullname: any }) => {
-                    return `${item?.fullname}`
-                      .toLowerCase()
-                      .includes(search.toLowerCase());
-                  })}
+                  data={
+                    content === "user"
+                      ? friends?.filter((item: { fullname: any }) =>
+                          `${item?.fullname}`
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        )
+                      : freelancer?.filter((item: { fullname: any }) =>
+                          `${item?.fullname}`
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        )
+                  }
                   keyExtractor={(item) => item.id}
                   renderItem={({ item }) => (
                     <ChatCard

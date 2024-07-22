@@ -6,7 +6,7 @@ import MapScreen from "../Screens/MapScreen/MapScreen";
 import Review from "../Screens/Review/Review";
 import Saved from "../Screens/Saved/Saved";
 import SavedLocation from "../Screens/SavedLocation/SavedLocation";
-
+import Calendar from "../Screens/Calendar";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +31,11 @@ const SavedStack = () => {
       <Stack.Screen
         name="Review"
         component={Review}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Calendar"
+        component={Calendar}
         options={{ headerShown: false }}
       />
       <Stack.Screen

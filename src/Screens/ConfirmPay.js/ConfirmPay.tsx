@@ -1,34 +1,33 @@
 import { Ionicons } from "@expo/vector-icons";
 import { StripeProvider, useStripe } from "@stripe/stripe-react-native";
 import React, { memo, useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import
+  {
+    ActivityIndicator,
+    Alert,
+    Image,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
+  } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import GreenStarSvg from "../../../assets/RNSVG/greenStarSvg";
 import InfoSvg from "../../../assets/RNSVG/infoSvg";
 
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from "../../utils/responsiveness.helpers";
+import
+  {
+    heightPercentageToDP,
+    widthPercentageToDP,
+  } from "../../utils/responsiveness.helpers";
 
 import styles from "./styles";
 
-import { cards } from "../../utils/data";
-import MasterCardSvg from "../../../assets/RNSVG/masterCardSvg";
-import PlusSvg from "../../../assets/RNSVG/plusSvg";
+import { getDistance } from "geolib";
+import moment from "moment";
 import { useUserStore } from "../../../Store/UserStore";
 import { DEFAULT_GALLERY_IMAGE } from "../../../config";
-import moment from "moment";
-import { getDistance } from "geolib";
 import { supabase } from "../../../lib/supabase";
 
 const ConfirmPay = ({ navigation, route }: { navigation: any; route: any }) => {
@@ -48,7 +47,7 @@ const ConfirmPay = ({ navigation, route }: { navigation: any; route: any }) => {
 
   const fetchPaymentSheetParams = async () => {
     const response = await fetch(
-      `https://seal-app-ucm3i.ondigitalocean.app/payment`,
+      `https://whale-app-dimes.ondigitalocean.app/payment`,
       {
         method: "POST",
         headers: {

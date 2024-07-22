@@ -23,10 +23,11 @@ const Saved = ({ navigation }: { navigation: any }) => {
   const user = useUserStore((state) => state.profile);
   const freelancers = useUserStore((state) => state.freelancers);
   const favData = useUserStore((state) => state.favorites);
+  const reload = useUserStore((state) => state.reloadFavs);
 
   useEffect(() => {
     getSavedUsers();
-  }, []);
+  }, [reload]);
 
   const getSavedUsers = async () => {
     const favorites = favData.map((fav) => fav.freelancer_id);
@@ -41,12 +42,10 @@ const Saved = ({ navigation }: { navigation: any }) => {
     favorites?.includes(freelancer.uid)
   );
 
-  // console.log(favData)
-
   const groupByLocation = (users) => {
     return users?.reduce((acc, user) => {
       const key =
-        user.location ||
+        user.location || "Unkown" ;
         (savedFav?.some((savedUser) => savedUser?.id === user.id)
           ? "Others"
           : null);

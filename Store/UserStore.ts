@@ -15,6 +15,8 @@ type UserState = {
   allFreelancers: Profile[] | null;
   loading: boolean;
   freelancerLocation:FreelancerLocation | null
+  reloadFavs: boolean
+  setReloadFavs: (reloadFavs: boolean) => void
   setImage:(image: string | null) => void
   setFreelancerLocation: (freelancerLocation: FreelancerLocation | null) => void
   setAllFreelancers: (allFreelancers: Profile[] | null) => void;
@@ -40,6 +42,8 @@ export const useUserStore = create<UserState>((set) => ({
   allFreelancers: null,
   freelancerLocation: null,
   image: null,
+  reloadFavs: false,
+  setReloadFavs: (reloadFavs) => set({reloadFavs}),
   setImage: (image) => set({image}),
   setFreelancerLocation: (freelancerLocation) => set({freelancerLocation}),
   setLoading: (loading) => set({ loading }),

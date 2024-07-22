@@ -65,7 +65,8 @@ const Booking = ({ navigation }: { navigation: any }) => {
     const { data: bookedFreelancers, error: err } = await supabase
       .from("Bookings")
       .select("*")
-      .eq("bookingId", profile[0].uid);
+      .eq("bookingId", profile[0].uid)
+      .order("id", { ascending: false })
     // .neq("uid", session?.user.user_metadata.sub);
     if (err) {
       console.log(err);
@@ -85,7 +86,8 @@ const Booking = ({ navigation }: { navigation: any }) => {
     const { data: freelancers, error: err } = await supabase
       .from("Bookings")
       .select("*")
-      .eq("freelancerId", profile[0].uid);
+      .eq("freelancerId", profile[0].uid)
+      .order("id", { ascending: false });
     // .neq("uid", session?.user.user_metadata.sub);
     if (err) {
       console.log(err);
@@ -129,6 +131,7 @@ const Booking = ({ navigation }: { navigation: any }) => {
   //   }
 
   // }, [content]);
+const sortedUsers = users.sort((a, b) => b.id - a.id);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FBFBFB" }}>
@@ -275,7 +278,7 @@ const Booking = ({ navigation }: { navigation: any }) => {
                     setData={setFreelancers}
                   />
                 )}
-                keyExtractor={(item, index) => index}
+                keyExtractor={(item, index) => index.toString()}
                 style={{
                   flex: 1,
                   paddingHorizontal: 10,
@@ -304,7 +307,7 @@ const Booking = ({ navigation }: { navigation: any }) => {
                 renderItem={({ item }) => (
                   <FreelancerBooking item={item} navigation={navigation} />
                 )}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item, index) => index.toString()}
                 style={{
                   flex: 1,
                   paddingHorizontal: 10,
