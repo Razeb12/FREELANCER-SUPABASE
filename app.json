@@ -16,12 +16,21 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.expectoo.freelancer"
+      "bundleIdentifier": "com.expectoo.freelancer",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAarxyzQsNQtOzS0rSr51QGbDSkxJkcwzk"
+      }
     },
     "android": {
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+       "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAarxyzQsNQtOzS0rSr51QGbDSkxJkcwzk"
+        }
       },
       "package": "com.expectoo.freelancer"
     },

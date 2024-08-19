@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "alarmix-a2729",
+  "private_key_id": "273a18250d67858b5daddf264ea0a3ced0e8c576",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIkSzAt3GxI7Lo\nd+k+gw8r89fWDHwj7UjFYgU+c3i0o1M63RbVJEmfmzS3ow28Q7Q2EzQwzNf/lTH7\ntsAm1LY7CK9+G9n/lU1B0/OZcbxDY3RgApcQ25LkBGDh6nUbH1k32aYPI9n2JNNk\nQzqlpYZl1GUwoNtreM+m1mFTvEC54BII5tyXLQFFiKFf7k1xl9/WMZaOS+Qmlcmu\nWoTf+Q8sRT0fprNjxTlkBB+SqdMEiNKTknNzzUdh1QIwqUfPHFSfETPjRFZoEYfU\naBFge0SuZXXDaP0r4UAT9ofcOjc9tvl107VQTTdPeDeDXLD8ZiWLolhQgfuVRhhJ\nwvKuEkefAgMBAAECggEAHEzabbmfYd6m/e+oNQPf038tXgHrpP4e8zWo28OwrScR\nNWXA365RHSOUmrIihrAJm5+2EN9hPapa9SjiOsMaO4DhklUdENfg9irmsn4T5xuq\nGL9aJYIgsJUq6SBgtG+wnRV+6EqnafiO7hTLulfS0PIunQqgK1f5T5HsWxkIYQb2\nj6BW5d5lwIidIz9YhDJV+Uaah+6CHyqW714BYCEvladbi+bskNJnZ5M98Ml1+AnH\nTeGVL5KFTwy+zef5N1RaUlHB69ZDgFkdNUxrbqY3dNCQ7ZeR9i/RtRSL0mA9UaEN\nj/qcRxkCuSAYETgmDd5JcbdNHtynyxVkTLmcNgNM4QKBgQD+VC46vwQQQAVpRpsX\naos7N7hdohH048iW6yqeWJn6IiT5rhDxZHMdJxLg3cBPK+n2u/UA+Oj4d7/jh+Tw\nLn1txS+/IafNgRvrcwKzmDD93zIGwcGgeLSKBtNk6fhnZiIiYwvCglfk8IRiLyC9\nH5Ch9rdZpKyiMVHIWFm6uIjVJwKBgQDJ4o8S4VVgAdkjzSnEE2jcn+WnxZHRy8wp\ndkGBVQIvCfiDbpBM5wsDLPqKpsE0hMhwedqGUy7h0NVgqFIpi1D0SWgfBaJilusM\nSOpbWoGo0WDJXI2XfP6cjrVMuR3GtcwLlp/RiW7p0LD0GGm+NhOi/kxYI+mwEOOX\nCApPwlE0yQKBgGYX3MbwTu1HBeUQ1sk7l9CZuYS8voCTv731gRI3dvgWJMmlul9s\nd1lIiieCXORrOGw3X06YnMzBJWJs9tYDk44xDc2n8Phpz49gh8EYYvJGWoqj1Npa\nGf8eZlWoJnM7aJBtOhdGw4m/kyTmzjmdJi4eH9P4auRg7/eAn+R4l1UZAoGBAL/C\nbTf3xQpedwwkkilmblIxpwhHB40JUTGI3Aum3V4k0GK3IGWLh9BKZuhQIHBsN59u\nfvzcAkoH/MXE29YOOKTxHO9qgKW4yCZxE/oV69aYmqBpQyzDU20NuHPZ2cinYdsY\nBVIYgruguJQCpF5CK0DE32tRIWVVhXgt8O11m4DRAoGAftGIHb43kxUXoLiuW/9O\nTRtm5BBorGxSIXmGVHV7kUEJuTscUIvtst2tftwsaYSxdJ4JAbwmBDQQW/pe7KRq\nLsAzXjWas2xiuH5me7c2OBnFdjOrUupevZ9EjURseDCzlFPFW4Tz6dmUsjGMttw5\nUfqLsjLHpR6109seKPzdCZg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "freelancer@alarmix-a2729.iam.gserviceaccount.com",
+  "client_id": "109248345512341838198",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/freelancer%40alarmix-a2729.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
